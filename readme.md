@@ -1,7 +1,6 @@
 # alfred-npm-install [![Build Status](https://travis-ci.org/Rawnly/alfred-npm-install.svg?branch=master)](https://travis-ci.org/Rawnly/alfred-npm-install)
 
-> My best module
-
+> [Iconfinder](https://iconfinder.com) istant search for [Alfred](https://www.alfredapp.com)
 
 ## Install
 
