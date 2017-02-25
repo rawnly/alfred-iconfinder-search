@@ -44,7 +44,7 @@ alfy.fetch(url, {
 	const items = data.map(x => ({
 					title: x.tags.join(','),
 					subtitle: x.icon_id,
-				 	arg: x.raster_sizes[ x.raster_sizes.length - 1 ].formats[0].download_url,
+				 	arg: 'https://api.iconfinder.com/v2/' + x.raster_sizes[ x.raster_sizes.length - 1 ].formats[0].download_url,
 					icon: {
 						path: path.join(dir, `${inp}_${x.icon_id}.png`)
 					}
