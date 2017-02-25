@@ -2,7 +2,7 @@
 
 ![](assets/animation.gif)
 
-> [Iconfinder](https://iconfinder.com) istant search for [Alfred](https://www.alfredapp.com)
+> [Iconfinder](https://iconfinder.com) instant search for [Alfred](https://www.alfredapp.com)
 
 ## Install
 
