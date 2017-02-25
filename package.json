@@ -1,0 +1,46 @@
+{
+  "name": "alfred-iconfinder-search",
+  "version": "0.0.1",
+  "description": "Iconfinder Instant Search workflow",
+  "license": "MIT",
+  "repository": "Rawnly/alfred-iconfinder-search",
+  "author": {
+    "name": "Rawnly",
+    "email": "fedevitale99@gmail.com",
+    "url": "rawnly.com"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "test": "xo",
+    "postinstall": "alfy-init",
+    "preuninstall": "alfy-cleanup"
+  },
+  "files": [
+    "index.js",
+    "icon.png",
+    "info.plist",
+		"assets/bug.png",
+		"assets/web.png",
+		"assets/thumbs"
+
+  ],
+  "keywords": [
+    "alfred",
+    "workflow",
+    "alfy",
+		"iconfinder",
+		"search",
+		"icons",
+		"icon",
+		"tool",
+		"alfred-workflow"
+  ],
+  "dependencies": {
+    "alfy": "^0.6.0"
+  },
+  "devDependencies": {
+    "xo": "^0.17.0"
+  }
+}
