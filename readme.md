@@ -18,7 +18,7 @@ In Alfred, type `ico`, send <kbd>Enter</kbd>, and input your query.
 
 
 ## Known issues
-	* #1
+* #1
 
 ## License
 [MIT license](license.md)  © Rawnly
