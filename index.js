@@ -73,7 +73,7 @@ alfy.fetch(url, {
 	data.map(x => {
 		let info = {
 			id: x.icon_id,
-			url: x.raster_sizes[ x.raster_sizes.length - 3 ].formats[0].preview_url
+			url: x.raster_sizes[ x.raster_sizes.length - 1 ].formats[0].preview_url
 		}
 
 		fs.exists( join(dir, `${inp}_${info.id}.png`), exists => {
