@@ -5,6 +5,7 @@ const alfy = require('alfy');
 const path = require('path');
 const fs = require('fs');
 const https = require('https');
+const alfredNotifier = require('alfred-notifier');
 
 // Shortcuts
 const fetch = alfy.fetch;
@@ -34,6 +35,8 @@ function download(filename, url) {
 
 
 
+// Checks for available update and updates the `info.plist`
+alfredNotifier();
 
 alfy.fetch(url, {
     transform: body => {
@@ -42,11 +45,11 @@ alfy.fetch(url, {
     }
 }).then(data => {
 	const items = data.map(x => ({
-					title: x.tags.join(','),
+					title: '[' + x.tags.join(', ') + ']',
 					subtitle: x.icon_id,
-				 	arg: 'https://api.iconfinder.com/v2/' + x.raster_sizes[ x.raster_sizes.length - 1 ].formats[0].download_url,
+				 	arg: `https://www.iconfinder.com/icons/${x.icon_id}`,
 					icon: {
-						path: path.join(dir, `${inp}_${x.icon_id}.png`)
+						path: fs.existsSync( path.join(dir, `${inp}_${x.icon_id}.png`) ) ? path.join(dir, `${inp}_${x.icon_id}.png`) : path.join(dir, `icon.png`)
 					}
 			 	}));
 
