@@ -23,13 +23,15 @@ const url = `https://api.iconfinder.com/v2/icons/search?query=${inp}&count=8&cli
 
 
 
-function download(filename, url) {
+function download(filename, url, callback) {
 	let file = fs.createWriteStream(filename);
 
 	https.get(url, function(response) {
-		 response.pipe(file).on('finish', () => {
-			 console.log('Done!');
-		 })
+		 if (callback != undefined) {
+			 response.pipe(file).on('finish', () => {
+				 callback(file)
+			 })
+		 }
 	});
 };
 
@@ -44,16 +46,52 @@ alfy.fetch(url, {
         return body;
     }
 }).then(data => {
-	const items = data.map(x => (
-		{
-			title: '[' + x.tags.join(', ') + ']',
-			subtitle: x.icon_id,
-			arg: `https://www.iconfinder.com/icons/${x.icon_id}`,
+
+	const items = data.map(x => {
+		const tags = x.tags.join(', ');
+		const id = x.icon_id;
+		const argument = `https://www.iconfinder.com/icons/${id}`;
+		const icon_path = join(dir, `${inp}_${x.icon_id}.png`);
+
+		return {
+			title: `[${tags}]`,
+			subtitle: `ID: ${id}`,
+			arg: argument,
 			icon: {
-				path: join(dir, `${inp}_${x.icon_id}.png`)
+				path: icon_path
+			},
+			mods: {
+				alt: {
+					arg: `https://api.iconfinder.com/v2/${x.raster_sizes[ x.raster_sizes.length - 1 ].formats[0].download_url}`,
+					subtitle: 'Directly download the 512x512 icon'
+				}
 			}
 		}
-	));
+	});
+
+	// Thumbs
+	data.map(x => {
+		let info = {
+			id: x.icon_id,
+			url: x.raster_sizes[ x.raster_sizes.length - 3 ].formats[0].preview_url
+		}
+
+		fs.exists( join(dir, `${inp}_${info.id}.png`), exists => {
+			if (!exists) {
+				download(join(dir, `${inp}_${info.id}.png`), info.url, () => {
+					return true
+				})
+			}
+		});
+	})
+
+	items.map(x => {
+		let id = x.subtitle.split('ID: ')[1];
+		x.icon = {
+			path: join(dir, `${inp}_${id}.png`)
+		}
+		return x.icon
+	})
 
 	items.push(
 		{
@@ -72,31 +110,16 @@ alfy.fetch(url, {
 			arg: 'https://github.com/rawnly/alfred-iconfinder-search/issues',
 			icon: {
 				path: "assets/bug.png"
-			}
+			},
+			mods: {
+				alt: {
+					subtitle: 'Open new issue on Github',
+					arg: 'https://github.com/rawnly/alfred-iconfinder-search/issues/new'
+				}
+			},
 		}
 	)
 
+	alfy.output( items )
 
-
-	const thumbs = data.map(x => ({
-		id: x.icon_id,
-		url: x.raster_sizes[ x.raster_sizes.length - 2 ].formats[0].preview_url
-	}))
-
-	thumbs.forEach((item) => {
-
-		let id = item.id;
-		let url = item.url;
-
-		fs.exists( join(dir, `${inp}_${id}.png`), exists => {
-			if (!exists) {
-				download( join(dir, `${inp}_${id}.png`), url, () => {
-					console.log(id, 'downloaded');
-				})
-			}
-		});
-
-	})
-
-	alfy.output(items)
 })
