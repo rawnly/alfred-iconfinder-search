@@ -35,25 +35,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>{query}</string>
-				<key>utf8</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>EE88C760-AD55-4593-9AA5-12ECDA6B842C</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>argumenttype</key>
@@ -94,6 +75,25 @@
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>{query}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>EE88C760-AD55-4593-9AA5-12ECDA6B842C</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
@@ -102,16 +102,16 @@
 		<key>BE913F7B-B4B9-4A0F-9481-61F8084D81A3</key>
 		<dict>
 			<key>xpos</key>
-			<integer>50</integer>
+			<integer>350</integer>
 			<key>ypos</key>
-			<integer>220</integer>
+			<integer>170</integer>
 		</dict>
 		<key>EE88C760-AD55-4593-9AA5-12ECDA6B842C</key>
 		<dict>
 			<key>xpos</key>
-			<integer>290</integer>
+			<integer>350</integer>
 			<key>ypos</key>
-			<integer>30</integer>
+			<integer>310</integer>
 		</dict>
 	</dict>
 	<key>webaddress</key>
