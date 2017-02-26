@@ -44,31 +44,37 @@ alfy.fetch(url, {
         return body;
     }
 }).then(data => {
-	const items = data.map(x => ({
-					title: '[' + x.tags.join(', ') + ']',
-					subtitle: x.icon_id,
-				 	arg: `https://www.iconfinder.com/icons/${x.icon_id}`,
-					icon: {
-						path: fs.existsSync( path.join(dir, `${inp}_${x.icon_id}.png`) ) ? path.join(dir, `${inp}_${x.icon_id}.png`) : path.join(dir, `icon.png`)
-					}
-			 	}));
-
-	items.push({
-		title: `Open in the browser`,
-		subtitle: `Search for "${inp}" icons in the browser`,
-		arg: `https://iconfinder.com/search?q=${inp}`,
-		icon: {
-			path: "assets/web.png"
+	const items = data.map(x => (
+		{
+			title: '[' + x.tags.join(', ') + ']',
+			subtitle: x.icon_id,
+			arg: `https://www.iconfinder.com/icons/${x.icon_id}`,
+			icon: {
+				path: join(dir, `${inp}_${x.icon_id}.png`)
+			}
 		}
-	})
+	));
 
-	items.push({
-		title: 'Report a bug..',
-		arg: 'https://github.com/rawnly/alfred-iconfinder-search/issues',
-		icon: {
-			path: "assets/bug.png"
+	items.push(
+		{
+			title: `Open in the browser`,
+			subtitle: `Search for "${inp}" icons in the browser`,
+			arg: `https://iconfinder.com/search?q=${inp}`,
+			icon: {
+				path: "assets/web.png"
+			}
 		}
-	})
+	)
+
+	items.push(
+		{
+			title: 'Report a bug..',
+			arg: 'https://github.com/rawnly/alfred-iconfinder-search/issues',
+			icon: {
+				path: "assets/bug.png"
+			}
+		}
+	)
 
 
 
