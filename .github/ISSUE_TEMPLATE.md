@@ -7,8 +7,8 @@
 
 
 <!-- Tell me a bit more about your issue -->
-# Issue
-Hello everyone,
+# The Issue
+
 
 
 [latest]: https://github.com/Rawnly/alfred-iconfinder-search/releases/latest
