@@ -18,7 +18,7 @@ In Alfred, type `ico`, send <kbd>Enter</kbd>, and input your query.
 
 
 ## Known issues
-* [#1](https://github.com/Rawnly/alfred-iconfinder-search/issues/1)
+* [x] ~~[#1 Hi, i got such error when i use it](https://github.com/Rawnly/alfred-iconfinder-search/issues/1)~~
 
 ## License
 [MIT license](license.md)  © Rawnly
